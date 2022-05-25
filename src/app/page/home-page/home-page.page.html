@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>GeoResto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid *ngFor="let restaurant of restaurants">
+      <ion-grid> {{ restaurant.nom }}&nbsp;{{ getNom(restaurant) }}</ion-grid>
+      <ion-button (click)="detailRestaurant(restaurant)">{{ restaurant.nom }} </ion-button>
+  </ion-grid>
+</ion-content>
+ 

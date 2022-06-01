@@ -9,6 +9,7 @@ import { Restaurant } from 'src/app/model/restaurant';
 export class RestaurantFormPagePage implements OnInit {
 
   restaurant: Restaurant = new Restaurant();
+  deviceCompatible:Boolean = true;
 
   constructor() { }
 

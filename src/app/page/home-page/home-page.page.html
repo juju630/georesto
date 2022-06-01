@@ -8,9 +8,20 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid *ngFor="let restaurant of restaurants">
-      <ion-grid> {{ restaurant.nom }}&nbsp;{{ getNom(restaurant) }}</ion-grid>
-      <ion-button (click)="detailRestaurant(restaurant)">{{ restaurant.nom }} </ion-button>
+  <ion-grid class="cards-container">
+    <ion-row>
+      <ion-col size="12" size-sm="9" size-md="6" size-lg="4" *ngFor="let restaurant of restaurants">
+        <ion-card (click)="detailRestaurant(restaurant)" >
+          <ion-img class="card-img" src={{restaurant.imageUrl}}></ion-img>
+          <ion-card-header>
+            <ion-card-subtitle>{{ restaurant.note }}</ion-card-subtitle>
+            <ion-card-title>{{ restaurant.nom }}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    
+      
   </ion-grid>
 </ion-content>
  

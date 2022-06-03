@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { StubService } from './providers/stub.service';
 import { RestaurantsService } from './providers/restaurants/restaurants.service';
 import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,7 +18,9 @@ import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http'
     BrowserModule, 
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

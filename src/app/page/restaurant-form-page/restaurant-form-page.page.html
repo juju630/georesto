@@ -38,8 +38,11 @@
 
       <ion-col size="6" *ngIf="deviceCompatible">
        <ion-card>
-         <ion-header>Preview</ion-header>
-         <ion-content></ion-content>
+          <ion-img class="card-img" src={{restaurant.imageUrl}}></ion-img>
+          <ion-card-header>
+            <ion-card-subtitle>{{ restaurant.note }}</ion-card-subtitle>
+            <ion-card-title>{{ restaurant.nom }}</ion-card-title>
+          </ion-card-header>
        </ion-card>
       </ion-col>
 

@@ -13,4 +13,12 @@ export class RestaurantsService {
   getAllRestaurants(): Observable<Restaurant[]>{
     return this.http.get<Restaurant[]>("http://localhost:3000/restaurants");
   }
+
+  getRestaurant(id:number): Observable<Restaurant>{
+    return this.http.get<Restaurant>("http://localhost:3000/restaurants/"+id);
+  }
+
+  create(restaurant:Restaurant): Observable<any>{
+    return this.http.post("http://localhost:3000/restaurants/",restaurant);
+  }
 }

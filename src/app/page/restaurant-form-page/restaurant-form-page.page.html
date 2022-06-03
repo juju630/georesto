@@ -12,7 +12,7 @@
     <ion-row>
 
       <ion-col size="{{deviceCompatible ? '6' : '12' }}">
-        <form (ngSubmit)="logForm()"  [formGroup]="formGroup">
+        <form (ngSubmit)="submitRestaurant()"  [formGroup]="formGroup">
           <ion-item class="margin_item">
             <ion-input type="text" placeholder="Nom du Restaurant" [(ngModel)]="restaurant.nom"  formControlName="nom"></ion-input>
           </ion-item>
@@ -29,7 +29,7 @@
             <ion-input type="text" placeholder="URL de l'image" [(ngModel)]="restaurant.imageUrl" formControlName="image"></ion-input>
           </ion-item>
         
-          <ion-button class="margin_item">
+          <ion-button type="submit" class="margin_item">
             <ion-label>Valider &nbsp;</ion-label>
             <ion-icon name="paper-plane-outline"></ion-icon>
           </ion-button>
@@ -37,6 +37,11 @@
       </ion-col>
 
       <ion-col size="6" *ngIf="deviceCompatible">
+        <ion-grid class="Title_Previ">
+          <ion-card>
+            <h1>Prévisualisation</h1>
+          </ion-card>
+        </ion-grid>
        <ion-card>
           <ion-img class="card-img" src={{restaurant.imageUrl}}></ion-img>
           <ion-card-header>

@@ -12,7 +12,9 @@
     <ion-row>
       <ion-col size="12" size-sm="9" size-md="6" size-lg="4" *ngFor="let restaurant of restaurants">
         <ion-card (click)="detailRestaurant(restaurant)" >
-          <ion-img class="card-img" src={{restaurant.imageUrl}}></ion-img>
+          <ion-thumbnail style="width:100%;height: 300px;">
+            <ion-img class="card-img" src={{restaurant.imageUrl}} style="height: 100%;min-width: 100%;" ></ion-img>
+          </ion-thumbnail>
           <ion-card-header>
             <ion-card-subtitle>{{ restaurant.note }}</ion-card-subtitle>
             <ion-card-title>{{ restaurant.nom }}</ion-card-title>

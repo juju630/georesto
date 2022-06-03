@@ -12,24 +12,24 @@
     <ion-row>
 
       <ion-col size="{{deviceCompatible ? '6' : '12' }}">
-        <form (ngSubmit)="logForm()">
-          <ion-item>
-            <ion-input type="text" placeholder="Nom du Restaurant" [(ngModel)]="restaurant.nom" name="nom"></ion-input>
+        <form (ngSubmit)="logForm()"  [formGroup]="formGroup">
+          <ion-item class="margin_item">
+            <ion-input type="text" placeholder="Nom du Restaurant" [(ngModel)]="restaurant.nom"  formControlName="nom"></ion-input>
           </ion-item>
 
-          <ion-item>
-            <ion-input type="text" placeholder="Ville" [(ngModel)]="restaurant.ville" name="ville"></ion-input>
+          <ion-item class="margin_item">
+            <ion-input type="text" placeholder="Ville" [(ngModel)]="restaurant.ville" formControlName="ville"></ion-input>
           </ion-item>
 
-          <ion-item>
-            <ion-input type="number" placeholder="Code Postal" [(ngModel)]="restaurant.codePostal" name="codePostal"></ion-input>
+          <ion-item class="margin_item">
+            <ion-input type="number" placeholder="Code Postal" [(ngModel)]="restaurant.codePostal" formControlName="codePostal"></ion-input>
           </ion-item>
           
-          <ion-item>
-            <ion-input type="text" placeholder="URL de l'image" [(ngModel)]="restaurant.imageUrl" name="image"></ion-input>
+          <ion-item class="margin_item">
+            <ion-input type="text" placeholder="URL de l'image" [(ngModel)]="restaurant.imageUrl" formControlName="image"></ion-input>
           </ion-item>
         
-          <ion-button>
+          <ion-button class="margin_item">
             <ion-label>Valider &nbsp;</ion-label>
             <ion-icon name="paper-plane-outline"></ion-icon>
           </ion-button>

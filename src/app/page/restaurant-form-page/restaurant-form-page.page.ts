@@ -34,13 +34,24 @@ export class RestaurantFormPagePage implements OnInit {
     })
   }
 
-  async presentToast(){
-    const toast = await this._toastService.create({
-      message : " Votre Restaurant a bien été crée ",
-      duration:4000,
-      icon: 'checkmark-circle-outline',
-    })
-    toast.present();
+  async presentToast(msg:string, isValid:boolean){
+    if(isValid){
+      const toast = await this._toastService.create({
+        message : msg,
+        duration:4000,
+        icon: 'checkmark-circle-outline',
+      })
+      toast.present();
+    }else{
+      const toast = await this._toastService.create({
+        message : msg,
+        duration:4000,
+        icon: 'close-circle-outline',
+      })
+      toast.present();
+    }
+    
+    
   }
 
   clearForm(){
@@ -53,10 +64,10 @@ export class RestaurantFormPagePage implements OnInit {
       this.restaurant.note = 0;
       this.restaurantService.create(this.restaurant).subscribe(resp => {
         this.clearForm();
-        this.presentToast();
+        this.presentToast(" Création du restaurant réussi ",true);
       });
     }else{
-      
+      this.presentToast(" Erreur, veuillez remplir le formulaire ",false);
     }
   }
 }

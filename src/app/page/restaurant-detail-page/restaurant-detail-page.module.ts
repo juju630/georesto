@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -15,6 +16,7 @@ import { RestaurantDetailPagePage } from './restaurant-detail-page.page';
     IonicModule,
     RestaurantDetailPagePageRoutingModule
   ],
-  declarations: [RestaurantDetailPagePage]
+  declarations: [RestaurantDetailPagePage],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class RestaurantDetailPagePageModule {}

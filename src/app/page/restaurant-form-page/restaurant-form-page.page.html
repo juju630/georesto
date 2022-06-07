@@ -26,7 +26,7 @@
           </ion-item>
           
           <ion-item class="margin_item">
-            <ion-input type="text" placeholder="URL de l'image" [(ngModel)]="restaurant.imageUrl" formControlName="image"></ion-input>
+            <ion-input type="text" (keyup)="SwitchDisplayForImg()" placeholder="URL de l'image" [(ngModel)]="restaurant.imageUrl" formControlName="image"></ion-input>
           </ion-item>
         
           <ion-button type="submit" class="margin_item">
@@ -43,7 +43,9 @@
           </ion-card>
         </ion-grid>
        <ion-card>
-          <ion-img class="card-img" src={{restaurant.imageUrl}}></ion-img>
+        
+          <ion-img *ngIf="SwitchDisplayImg" class="card-img" src="https://image.shutterstock.com/image-vector/logo-template-monogram-element-flourish-600w-1700746879.jpg"></ion-img>
+          <ion-img *ngIf="!SwitchDisplayImg" class="card-img" src={{restaurant.imageUrl}}></ion-img>
           <ion-card-header>
             <ion-card-subtitle>{{ restaurant.note }}</ion-card-subtitle>
             <ion-card-title>{{ restaurant.nom }}</ion-card-title>

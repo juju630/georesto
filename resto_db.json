@@ -53,6 +53,15 @@
       "note": 8.5,
       "nombreNote": 17,
       "imageUrl": "https://image.shutterstock.com/image-photo/glasses-flowers-fork-knife-served-600w-562081174.jpg"
+    },
+    {
+      "nom": "Camille's",
+      "codePostal": 63000,
+      "ville": "Clermont-Ferrand",
+      "note": 0,
+      "nombreNote": 0,
+      "imageUrl": "https://image.shutterstock.com/image-photo/halflighted-hall-loft-style-mexican-600w-430097278.jpg",
+      "id": 7
     }
   ]
 }

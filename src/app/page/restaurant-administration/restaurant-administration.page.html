@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Administration des Restaurants</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngFor=" let restaurant of restaurants">
+    <ion-card>
+      <ion-card-content>
+        <ion-card-header class="sizeText">
+          {{ restaurant.nom }} &nbsp; {{ restaurant.ville }} &nbsp; {{restaurant.codePostal}}
+          <ion-icon class="icon-right sizeIcon" name="create-outline"></ion-icon>
+          <ion-icon class="sizeIcon" (click)="deleteRestaurant(restaurant)" name="trash-outline"></ion-icon>
+        </ion-card-header>
+      </ion-card-content>
+    </ion-card>
+</ion-content>

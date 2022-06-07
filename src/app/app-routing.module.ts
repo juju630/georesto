@@ -22,7 +22,11 @@ const routes: Routes = [
   {
     path: 'restaurant-form',
     loadChildren: () => import('./page/restaurant-form-page/restaurant-form-page.module').then( m => m.RestaurantFormPagePageModule)
+  },  {
+    path: 'restaurant-administration',
+    loadChildren: () => import('./page/restaurant-administration/restaurant-administration.module').then( m => m.RestaurantAdministrationPageModule)
   }
+
 ];
 
 @NgModule({

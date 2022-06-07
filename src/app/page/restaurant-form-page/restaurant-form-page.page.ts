@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
 import { Restaurant } from 'src/app/model/restaurant';
+import { Device } from '@capacitor/device';
 import { RestaurantsService } from 'src/app/providers/restaurants/restaurants.service';
 
 @Component({
@@ -13,16 +14,31 @@ export class RestaurantFormPagePage implements OnInit {
 
   restaurant: Restaurant = new Restaurant();
   deviceCompatible:Boolean = true;
+  SwitchDisplayImg:Boolean = true;
 
   formGroup:FormGroup;
 
   constructor(private readonly restaurantService:RestaurantsService,
-    private _toastService: ToastController) { 
+    private _toastService: ToastController,
+    ) { 
    
   }
 
   ngOnInit() {
     this.initFormControl();
+    this.getDevice();
+  }
+
+  async getDevice(){
+    const info = await Device.getInfo();
+    switch(info.operatingSystem){
+      case 'android':
+      case 'ios':
+        this.deviceCompatible = false;
+        break;
+      default:
+        this.deviceCompatible = true;
+    }
   }
 
   initFormControl(){
@@ -32,6 +48,10 @@ export class RestaurantFormPagePage implements OnInit {
       codePostal: new FormControl('',Validators.required),
       image: new FormControl('',Validators.required),
     })
+  }
+
+  SwitchDisplayForImg(){
+    this.SwitchDisplayImg = this.restaurant.imageUrl === "" || this.restaurant.imageUrl === null;
   }
 
   async presentToast(msg:string, isValid:boolean){
@@ -50,8 +70,6 @@ export class RestaurantFormPagePage implements OnInit {
       })
       toast.present();
     }
-    
-    
   }
 
   clearForm(){

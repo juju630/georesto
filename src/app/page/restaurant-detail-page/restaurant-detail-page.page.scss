@@ -1,3 +1,27 @@
 .detail-img img{
     object-fit: cover;
 }
+.back-button{
+    position: absolute;
+    top:15px;
+    left:15px;
+    width: 50px;
+    display: flex;
+    transition:0.5s;
+}
+
+.back-button ion-icon{
+    position: absolute;
+    left: 0px;
+    background-color: inherit;
+    z-index: 2;
+}
+.text-container{
+    width: 78px;
+    position: absolute;
+    left: 28px;
+}
+
+.back-button:hover{
+    width: 128px;
+}

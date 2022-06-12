@@ -4,7 +4,7 @@ import { Restaurant } from 'src/app/model/restaurant';
 import { RestaurantsService } from 'src/app/providers/restaurants/restaurants.service';
 import { GoogleMap } from '@capacitor/google-maps';
 
-
+import { environment } from './../../../environments/environment';
 
 
 @Component({
@@ -18,11 +18,11 @@ export class RestaurantDetailPagePage implements OnInit {
 
 
   restaurant: Restaurant = new Restaurant;
-  id:number;
-  
-  constructor(private restaurantsService:RestaurantsService,
-              private activatedRoute: ActivatedRoute,
-              private router:Router) { }
+  id: number;
+
+  constructor(private restaurantsService: RestaurantsService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
     this.id = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
@@ -30,19 +30,18 @@ export class RestaurantDetailPagePage implements OnInit {
     this.initMap();
   }
 
-  initValue(){
+  initValue() {
     this.restaurantsService.getRestaurant(this.id).subscribe(resp => {
-      
       this.restaurant = resp;
       console.log(this.restaurant)
     });
   }
 
-  retour(){
+  retour() {
     this.router.navigate(['/']);
   }
-  async initMap(){
-    const apiKey = 'AIzaSyCCkZEW2f8G1jxA1-aBeCY4-1UhHtoWyI4';
+  async initMap() {
+    const apiKey = environment.apiKey;
     const mapRef = document.getElementById('map');
     const newMap = await GoogleMap.create({
       id: 'my-map', // Unique identifier for this map instance

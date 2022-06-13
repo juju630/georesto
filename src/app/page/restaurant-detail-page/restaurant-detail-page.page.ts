@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Restaurant } from 'src/app/model/restaurant';
 import { RestaurantsService } from 'src/app/providers/restaurants/restaurants.service';
 import { GoogleMap } from '@capacitor/google-maps';
+import { Device } from '@capacitor/device';
 
 import { environment } from './../../../environments/environment';
 
@@ -14,13 +15,11 @@ import { environment } from './../../../environments/environment';
 })
 export class RestaurantDetailPagePage implements OnInit {
 
-
-
-
   restaurant: Restaurant = new Restaurant;
   id: number;
-
-  constructor(private restaurantsService: RestaurantsService,
+  deviceCloseDefault: Boolean = true;
+  constructor(
+    private restaurantsService: RestaurantsService,
     private activatedRoute: ActivatedRoute,
     private router: Router) { }
 
@@ -28,6 +27,7 @@ export class RestaurantDetailPagePage implements OnInit {
     this.id = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
     this.initValue();
     this.initMap();
+    this.getDevice();
   }
 
   initValue() {
@@ -63,5 +63,17 @@ export class RestaurantDetailPagePage implements OnInit {
         lng: 3.108793
       }
     });
+  }
+
+  async getDevice() {
+    const info = await Device.getInfo();
+    switch (info.operatingSystem) {
+      case 'android':
+      case 'ios':
+        this.deviceCloseDefault = true;
+        break;
+      default:
+        this.deviceCloseDefault = false;
+    }
   }
 }

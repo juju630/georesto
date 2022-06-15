@@ -37,24 +37,6 @@
       "imageUrl": "https://image.shutterstock.com/image-photo/interior-cozy-restaurant-contemporary-design-600w-709645828.jpg"
     },
     {
-      "id": 5,
-      "nom": "Restaurant 5",
-      "codePostal": 63000,
-      "ville": "Clermont",
-      "note": 8.5,
-      "nombreNote": 17,
-      "imageUrl": "https://image.shutterstock.com/image-photo/halflighted-hall-loft-style-mexican-600w-430097278.jpg"
-    },
-    {
-      "id": 6,
-      "nom": "Restaurant 6",
-      "codePostal": 63000,
-      "ville": "Clermont",
-      "note": 8.5,
-      "nombreNote": 17,
-      "imageUrl": "https://image.shutterstock.com/image-photo/glasses-flowers-fork-knife-served-600w-562081174.jpg"
-    },
-    {
       "nom": "Camille's",
       "codePostal": 63000,
       "ville": "Clermont-Ferrand",

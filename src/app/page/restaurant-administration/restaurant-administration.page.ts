@@ -25,18 +25,35 @@ export class RestaurantAdministrationPage implements OnInit {
     })
   }
 
-  async presentAlert(){
+  async presentAlert(restaurant:Restaurant){
     const alert = await this.alertController.create({
       header: 'Alert',
       subHeader: 'Suppression',
       message: 'Voulez-vous supprimer ce restaurant ?',
-      buttons: ['OK']
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Valider',
+          handler: () => {
+            console.log('Valider Clicked');
+            this.restaurantService.delete(restaurant).subscribe(resp => {
+              this.initRestaurant();
+            })
+          }
+        }
+      ]
     });
     await alert.present();
   }
 
   deleteRestaurant(restaurant:Restaurant){
-    this.presentAlert();
+    this.presentAlert(restaurant);
   }
 
 

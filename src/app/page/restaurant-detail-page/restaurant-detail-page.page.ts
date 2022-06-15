@@ -17,7 +17,7 @@ export class RestaurantDetailPagePage implements OnInit {
 
   restaurant: Restaurant = new Restaurant;
   id: number;
-  deviceCloseDefault: Boolean = true;
+  hideMap: Boolean = false;
   constructor(
     private restaurantsService: RestaurantsService,
     private activatedRoute: ActivatedRoute,
@@ -26,14 +26,13 @@ export class RestaurantDetailPagePage implements OnInit {
   ngOnInit() {
     this.id = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
     this.initValue();
-    this.initMap();
-    this.getDevice();
+    
   }
 
   initValue() {
     this.restaurantsService.getRestaurant(this.id).subscribe(resp => {
       this.restaurant = resp;
-      console.log(this.restaurant)
+      this.initMap();
     });
   }
 
@@ -41,39 +40,34 @@ export class RestaurantDetailPagePage implements OnInit {
     this.router.navigate(['/']);
   }
   async initMap() {
-    const apiKey = environment.apiKey;
-    const mapRef = document.getElementById('map');
-    const newMap = await GoogleMap.create({
-      id: 'my-map', // Unique identifier for this map instance
-      element: mapRef, // reference to the capacitor-google-map element
-      apiKey: apiKey, // Your Google Maps API Key
-      config: {
-        center: {
-          // The initial position to be rendered by the map
-          lat: 45.761954,
-          lng: 3.108793,
-        },
-        zoom: 17, // The initial zoom level to be rendered by the map
-      },
-    });
-    // Add a marker to the map
-    const markerId = await newMap.addMarker({
-      coordinate: {
-        lat: 45.761954,
-        lng: 3.108793
-      }
-    });
-  }
-
-  async getDevice() {
-    const info = await Device.getInfo();
-    switch (info.operatingSystem) {
-      case 'android':
-      case 'ios':
-        this.deviceCloseDefault = true;
-        break;
-      default:
-        this.deviceCloseDefault = false;
+    if(this.restaurant.latitude===undefined || this.restaurant.longitude===undefined){
+      this.hideMap=true;
     }
+    else{
+      console.log(this.restaurant.latitude)
+      const apiKey = environment.apiKey;
+      const mapRef = document.getElementById('map');
+      const newMap = await GoogleMap.create({
+        id: 'my-map', // Unique identifier for this map instance
+        element: mapRef, // reference to the capacitor-google-map element
+        apiKey: apiKey, // Your Google Maps API Key
+        config: {
+          center: {
+            // The initial position to be rendered by the map
+            lat: this.restaurant.latitude,
+            lng: this.restaurant.longitude,
+          },
+          zoom: 17, // The initial zoom level to be rendered by the map
+        },
+      });
+      // Add a marker to the map
+      const markerId = await newMap.addMarker({
+        coordinate: {
+          lat: this.restaurant.latitude,
+          lng: this.restaurant.longitude,
+        }
+      });
+    }
+    
   }
 }

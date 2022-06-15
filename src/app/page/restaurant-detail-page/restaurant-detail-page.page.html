@@ -5,22 +5,33 @@
 <ion-content>
   <ion-grid class="no-padding">
     <img class="detail-img" src={{restaurant.imageUrl}} style="height: 320px;width: 100%;object-fit: cover;">
-    <h2
-      style="margin: 50px;font-size:35px;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight:100">
-      {{ restaurant.nom }}</h2>
     <ion-button (click)="retour()" class="back-button" color="dark">
       <ion-icon class="test" name="arrow-back-outline"></ion-icon>
       <div class="text-container">
         Retour
       </div>
     </ion-button>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" size-sm="12" size-md="9">
+          <h2 class="restaurant-title">{{ restaurant.nom }}</h2>
+        </ion-col >
+          
+        <ion-col size="12" size-sm="12" size-md="3">
+          <div class="restaurant-note">
+            {{ restaurant.note }} / 10
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
 
-    <!-- <capacitor-google-map id="map" style="float:right;margin:20px"></capacitor-google-map> -->
+    <p class="restaurant-description">{{ restaurant.description }}</p>
 
-    <ion-grid class="no-padding">
+    <ion-grid class="no-padding" *ngIf="!hideMap">
       <ion-row>
         <ion-col size="12" class="no-padding">
-          <capacitor-google-map id="map"></capacitor-google-map>
+          <capacitor-google-map id="map" ></capacitor-google-map>
         </ion-col>
       </ion-row>
     </ion-grid>

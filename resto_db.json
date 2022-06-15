@@ -1,24 +1,6 @@
 {
   "restaurants": [
     {
-      "id": 1,
-      "nom": "Restaurant 1",
-      "codePostal": 63000,
-      "ville": "Clermont",
-      "note": 8.5,
-      "nombreNote": 17,
-      "imageUrl": "https://image.shutterstock.com/image-photo/badung-bali-indonesia-march-13-600w-1905344329.jpg"
-    },
-    {
-      "id": 2,
-      "nom": "Restaurant 2",
-      "codePostal": 63000,
-      "ville": "Clermont",
-      "note": 8.5,
-      "nombreNote": 17,
-      "imageUrl": "https://image.shutterstock.com/image-photo/restaurant-chilling-out-classy-lifestyle-600w-507639565.jpg"
-    },
-    {
       "id": 3,
       "nom": "Restaurant 3",
       "codePostal": 63000,

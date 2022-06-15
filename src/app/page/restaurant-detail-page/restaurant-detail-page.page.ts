@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Restaurant } from 'src/app/model/restaurant';
-import { StubService } from 'src/app/providers/stub.service';
+import { RestaurantsService } from 'src/app/providers/restaurants/restaurants.service';
 
 @Component({
   selector: 'app-restaurant-detail-page',
@@ -11,29 +11,23 @@ import { StubService } from 'src/app/providers/stub.service';
 export class RestaurantDetailPagePage implements OnInit {
 
   restaurants: Restaurant[] = [];
-  restaurant: Restaurant;
+  restaurant: Restaurant = new Restaurant;
   id:string;
   
-  constructor(private readonly stub:StubService,
+  constructor(private readonly restaurantService: RestaurantsService,
               private activatedRoute: ActivatedRoute,
               private router:Router) { }
 
   ngOnInit() {
-    this.initValue();
-    this.findRestaurant();
-  }
-
-  initValue(){
-    this.restaurants = this.stub.getStubRestaurant();
-  }
-
-  findRestaurant(){
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.restaurants.forEach(rest => {
-      if(rest.id.toString() === this.id){
-        this.restaurant = rest;
-        return;
-      }
+    this.findRestaurant(this.id);
+    
+  }
+
+
+  findRestaurant(id:string){
+    this.restaurantService.getRestaurant(Number(this.id)).subscribe(resp => {
+      this.restaurant = resp;
     })
   }
 

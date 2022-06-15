@@ -21,4 +21,8 @@ export class RestaurantsService {
   create(restaurant:Restaurant): Observable<any>{
     return this.http.post("http://localhost:3000/restaurants/",restaurant);
   }
+
+  delete(restaurant:Restaurant): Observable<any> {
+    return this.http.delete("http://localhost:3000/restaurants/"+restaurant.id,)
+  }
 }

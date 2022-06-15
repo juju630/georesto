@@ -25,11 +25,16 @@ export class RestaurantAdministrationPage implements OnInit {
     })
   }
 
+<<<<<<< HEAD
   async presentAlert(restaurant:Restaurant){
+=======
+  async presentAlert(){
+>>>>>>> master
     const alert = await this.alertController.create({
       header: 'Alert',
       subHeader: 'Suppression',
       message: 'Voulez-vous supprimer ce restaurant ?',
+<<<<<<< HEAD
       buttons: [{
         text:'OK',
         handler: () => {
@@ -47,6 +52,15 @@ export class RestaurantAdministrationPage implements OnInit {
   deleteRestaurant(restaurant:Restaurant){
     this.presentAlert(restaurant);
     this.initRestaurant();
+=======
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
+
+  deleteRestaurant(restaurant:Restaurant){
+    this.presentAlert();
+>>>>>>> master
   }
 
 

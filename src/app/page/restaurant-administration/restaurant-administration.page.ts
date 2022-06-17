@@ -49,5 +49,9 @@ export class RestaurantAdministrationPage implements OnInit {
     this.initRestaurant();
   }
 
+  modifyRestaurant(restaurant:Restaurant){
+    
+  }
+
 
 }

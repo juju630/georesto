@@ -18,20 +18,22 @@ describe('RestaurantDetailPagePage', () => {
   };
 
   beforeEach(waitForAsync(() => {
+
+    apiService = jasmine.createSpyObj('getRestaurant');
+
+
     TestBed.configureTestingModule({
       declarations: [ RestaurantDetailPagePage ],
       imports: [IonicModule.forRoot(),
         RouterTestingModule,
         HttpClientTestingModule],
-        providers: [
+        providers: [ 
           { provide: RestaurantsService, useValue:ApiServiceRestaurantMock  }
         ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(RestaurantDetailPagePage);
     component = fixture.componentInstance;
-
-    apiService = TestBed.inject(RestaurantsService);
     fixture.detectChanges();
   }));
 
@@ -42,11 +44,10 @@ describe('RestaurantDetailPagePage', () => {
   it('Load Details from Restaurant', () => {
 
     const id = "5";
-
     spyOn(apiService,'getRestaurant');
 
     component.findRestaurant(id);
-    expect(component.restaurant.id).toEqual(1);
+    expect(component.restaurant.id).toEqual(5);
     expect(component.restaurant.nom).toBeDefined();
 
     expect(apiService.getRestaurant).toHaveBeenCalled();

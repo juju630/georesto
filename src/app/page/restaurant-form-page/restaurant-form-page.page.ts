@@ -29,6 +29,10 @@ export class RestaurantFormPagePage implements OnInit {
     this.getDevice();
   }
 
+  ngOnDestroy(){
+
+  }
+
   async getDevice(){
     const info = await Device.getInfo();
     switch(info.operatingSystem){

@@ -4,6 +4,8 @@ import { ToastController } from '@ionic/angular';
 import { Restaurant } from 'src/app/model/restaurant';
 import { Device } from '@capacitor/device';
 import { RestaurantsService } from 'src/app/providers/restaurants/restaurants.service';
+import { GeocodingService } from 'src/app/services/geocoding.service';
+import { GeocoderResponse } from 'src/app/model/geocoder-response';
 
 @Component({
   selector: 'app-restaurant-form-page',
@@ -18,9 +20,10 @@ export class RestaurantFormPagePage implements OnInit {
 
   formGroup:FormGroup;
 
-  constructor(private readonly restaurantService:RestaurantsService,
+  constructor(
+    private readonly restaurantService:RestaurantsService,
     private _toastService: ToastController,
-    ) { 
+    private geocodingService: GeocodingService) { 
    
   }
 
@@ -91,5 +94,24 @@ export class RestaurantFormPagePage implements OnInit {
     }else{
       this.presentToast(" Erreur, veuillez remplir le formulaire ",false);
     }
+  }
+
+  findLatLng(){
+    if(!this.restaurant.codePostal || !this.restaurant.ville || !this.restaurant.rue){
+      return;
+    }
+    this.geocodingService
+      .getLocation(this.restaurant.rue +", "+this.restaurant.codePostal+" "+this.restaurant.ville)
+      .subscribe(
+        (response : GeocoderResponse) => {
+          if(response.status === 'OK' && response.results?.length){
+            const location = response.results[0];
+            const loc: any = location.geometry.location;
+            this.restaurant.latitude = loc.lat;
+            this.restaurant.longitude = loc.lng;
+          }
+        }
+      )
+
   }
 }

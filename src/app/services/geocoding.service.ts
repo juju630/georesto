@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { GeocoderResponse } from './../model/geocoder-response';
 import { Observable } from 'rxjs';
+import { GoogleMap } from '@capacitor/google-maps';
 
 @Injectable({
   providedIn: 'root',

@@ -24,6 +24,10 @@
           <ion-item class="margin_item">
             <ion-input type="number" placeholder="Code Postal" [(ngModel)]="restaurant.codePostal" formControlName="codePostal"></ion-input>
           </ion-item>
+
+          <ion-item class="margin_item">
+            <ion-input type="text" placeholder="Rue" [(ngModel)]="restaurant.rue" formControlName="rue"></ion-input>
+          </ion-item>
           
           <ion-item class="margin_item">
             <ion-input type="text" (keyup)="SwitchDisplayForImg()" placeholder="URL de l'image" [(ngModel)]="restaurant.imageUrl" formControlName="image"></ion-input>

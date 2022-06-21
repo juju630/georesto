@@ -57,6 +57,4 @@ export class RestaurantAdministrationPage implements OnInit {
     this.serviceShare.setCurrentModifyRestaurant(restaurant);
     this.route.navigate(['/restaurant-form',restaurant]);
   }
-
-
 }

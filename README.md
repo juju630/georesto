@@ -31,4 +31,15 @@ Sur la page du détails du restaurant vous pouvez trouver plusieurs informations
 
 Vous pouvez également ajouter votre propre Restaurant en remplissant notre formulaire. Pour vous aidez à personnaliser au maximum votre offre , nous mettons en place un système de prévisualisation.
 
-![image](https://user-images.githubusercontent.com/58172330/174343784-fb0e1926-9351-46a9-9adb-89bf3392a83f.png)
+![image](https://user-images.githubusercontent.com/58172330/174851017-a7cbc1e2-b655-4172-8825-5997deb991e1.png)
+
+
+## Rechercher un Restaurant ## 
+
+Pour faciliter vos recherches, nous mettons en place un système de filtre sur le nom et la note du restaurant :
+
+![image](https://user-images.githubusercontent.com/58172330/174851580-c6c6384d-6f5a-4f0f-8675-aaf728cca929.png)
+
+
+
+

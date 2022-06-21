@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Restaurant } from 'src/app/model/restaurant';
 import { RestaurantsService } from 'src/app/providers/restaurants/restaurants.service';
 import { GoogleMap } from '@capacitor/google-maps';
-
+import { AlertController, ToastController } from '@ionic/angular';
 import { environment } from './../../../environments/environment';
 
 
@@ -17,15 +17,17 @@ export class RestaurantDetailPagePage implements OnInit {
   restaurant: Restaurant = new Restaurant;
   id: number;
   hideMap: Boolean = false;
+
   constructor(
     private restaurantsService: RestaurantsService,
     private activatedRoute: ActivatedRoute,
+    private _toastService: ToastController,
+    private alertController:AlertController,
     private router: Router) { }
 
   ngOnInit() {
     this.id = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
     this.initValue();
-    
   }
 
   initValue() {
@@ -33,6 +35,13 @@ export class RestaurantDetailPagePage implements OnInit {
       this.restaurant = resp;
       this.initMap();
     });
+  }
+
+  calculRestaurantNote(restaurant:Restaurant){
+    if(restaurant.nombreNote == 0){
+      return 0;
+    }
+    return restaurant.note / restaurant.nombreNote;
   }
 
   retour() {
@@ -67,6 +76,56 @@ export class RestaurantDetailPagePage implements OnInit {
         }
       });
     }
-    
+  }
+
+  async displayNoteAlert(){
+    const alert = await this.alertController.create({
+      header: 'Notation',
+      subHeader: 'Notation',
+      message: "Veuillez donner une note au restaurant",
+      inputs: [
+        {
+          name: 'note',
+          placeholder: 'Number',
+          type:'number',
+          min:0,
+          max:10,
+        }
+      ],
+      buttons: [{
+        text: 'Confirmer',
+        handler: data => {
+          if(data.note > 10 || data.note < 0){
+            this.presentToast(" Veuillez rentrer une note valide ",false);
+          }else{    
+            this.restaurant.nombreNote ++;
+            this.restaurant.note = Number(this.restaurant.note)+ Number(data.note);
+            this.presentToast(" Note prise en compte ",true);
+          }
+          
+        }
+      },{
+        text: 'Annuler'
+      }]
+    })
+    alert.present();
+  }
+
+  async presentToast(msg:string, isValid:boolean){
+    if(isValid){
+      const toast = await this._toastService.create({
+        message : msg,
+        duration:4000,
+        icon: 'checkmark-circle-outline',
+      })
+      toast.present();
+    }else{
+      const toast = await this._toastService.create({
+        message : msg,
+        duration:4000,
+        icon: 'close-circle-outline',
+      })
+      toast.present();
+    }
   }
 }

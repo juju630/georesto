@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Restaurant } from 'src/app/model/restaurant';
 import { RestaurantsService } from 'src/app/providers/restaurants/restaurants.service';
+import { Geolocation } from '@capacitor/geolocation';
 
 @Component({
   selector: 'app-recherche-restaurant',
@@ -29,12 +30,14 @@ export class RechercheRestaurantPage implements OnInit {
 
   ngOnInit() {
     this.loadAllRestaurant();
+    
   }
 
   loadAllRestaurant(){
     this.restaurantService.getAllRestaurants().subscribe(resp => {
       this.restaurants = resp;
       this.displayRestaurant = this.restaurants;
+      this.printCurrentPosition();
     })
   }
 
@@ -101,4 +104,18 @@ export class RechercheRestaurantPage implements OnInit {
       }
     });
   }
+
+  async printCurrentPosition() {
+    let coordinates = await Geolocation.getCurrentPosition();
+    let coords = {lat : coordinates.coords.latitude, lng: coordinates.coords.longitude};
+    this.restaurants.forEach(rest => {
+      let x = coords.lat - rest.latitude;
+      let y = coords.lng - rest.longitude;
+      console.log(rest.latitude + " / " + rest.longitude)
+      console.log(coords.lat + " / " + coords.lng)
+      console.log(Math.sqrt(x*x + y*y))
+    })
+    console.log('Current position:', coordinates);
+  };
+
 }

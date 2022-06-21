@@ -11,22 +11,22 @@ export class RestaurantsService {
   constructor(private http: HttpClient) { }
 
   getAllRestaurants(): Observable<Restaurant[]> {
-    return this.http.get<Restaurant[]>("http://localhost:3000/restaurants");
+    return this.http.get<Restaurant[]>("https://georesto-api.herokuapp.com/restaurants/");
   }
 
   getRestaurant(id: number): Observable<Restaurant> {
-    return this.http.get<Restaurant>("http://localhost:3000/restaurants/" + id);
+    return this.http.get<Restaurant>("https://georesto-api.herokuapp.com/restaurants/" + id);
   }
 
   create(restaurant: Restaurant): Observable<any> {
-    return this.http.post("http://localhost:3000/restaurants/", restaurant);
+    return this.http.post("https://georesto-api.herokuapp.com/restaurants/", restaurant);
   }
 
   delete(restaurant:Restaurant): Observable<any> {
-    return this.http.delete("http://localhost:3000/restaurants/"+restaurant.id,)
+    return this.http.delete("https://georesto-api.herokuapp.com/restaurants/"+restaurant.id,)
   }
 
   update(restaurant:Restaurant): Observable<any>{
-    return this.http.put("http://localhost:3000/restaurants/"+restaurant.id,restaurant);
+    return this.http.put("https://georesto-api.herokuapp.com/restaurants/"+restaurant.id,restaurant);
   }
 }

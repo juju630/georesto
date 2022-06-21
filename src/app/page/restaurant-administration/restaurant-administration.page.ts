@@ -37,7 +37,7 @@ export class RestaurantAdministrationPage implements OnInit {
       buttons: [{
         text:'OK',
         handler: () => {
-          this.restaurantService.delete(restaurant).subscribe( resp => {})
+          this.restaurantService.delete(restaurant).subscribe( resp => {this.initRestaurant();})
         }
       },{
         text:'Cancel'
@@ -45,7 +45,7 @@ export class RestaurantAdministrationPage implements OnInit {
       
     });
     await alert.present();
-    this.initRestaurant();
+    
   }
 
   deleteRestaurant(restaurant:Restaurant){
@@ -56,5 +56,19 @@ export class RestaurantAdministrationPage implements OnInit {
   modifyRestaurant(restaurant:Restaurant){
     this.serviceShare.setCurrentModifyRestaurant(restaurant);
     this.route.navigate(['/restaurant-form',restaurant]);
+  }
+
+  openSlider(item, index){
+    let a = Array.prototype.slice.call( item.el.children )
+      a.map((val)=>{
+        if(val.id == 'slidingItem'+index){
+          if(val.attributes.class.textContent.includes("active")){
+            val.close();
+          }
+          else{
+            val.open();
+          }
+        }
+      });
   }
 }

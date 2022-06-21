@@ -7,14 +7,21 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngFor=" let restaurant of restaurants">
-    <ion-card>
-      <ion-card-content>
-        <ion-card-header class="sizeText">
-          {{ restaurant.nom }} &nbsp; {{ restaurant.ville }} &nbsp; {{restaurant.codePostal}}
-          <ion-icon class="icon-right sizeIcon" (click)="modifyRestaurant(restaurant) " name="create-outline"></ion-icon>
-          <ion-icon class="sizeIcon" (click)="deleteRestaurant(restaurant)" name="trash-outline"></ion-icon>
-        </ion-card-header>
-      </ion-card-content>
-    </ion-card>
+<ion-content>
+  <ion-list #slidingItems>
+    <ion-item-sliding *ngFor=" let restaurant of restaurants; let index = index" class="edit-item-slider" (click)="openSlider(slidingItems, index)" id="slidingItem{{ index }}">
+      <ion-item>
+        <ion-label> {{ restaurant.nom }} &nbsp; {{ restaurant.ville }} &nbsp; {{restaurant.codePostal}}</ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option (click)="modifyRestaurant(restaurant)">
+          <ion-icon class="sizeIcon" name="create-outline"></ion-icon>
+        </ion-item-option>
+        <ion-item-option (click)="deleteRestaurant(restaurant)">
+          <ion-icon class="sizeIcon" name="trash-outline"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+    
 </ion-content>

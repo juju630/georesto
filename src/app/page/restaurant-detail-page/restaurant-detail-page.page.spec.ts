@@ -46,11 +46,19 @@ describe('RestaurantDetailPagePage', () => {
     const id = "5";
     spyOn(apiService,'getRestaurant');
 
-    component.findRestaurant(id);
+    //component.findRestaurant(id);
     expect(component.restaurant.id).toEqual(5);
     expect(component.restaurant.nom).toBeDefined();
 
     expect(apiService.getRestaurant).toHaveBeenCalled();
   });
+
+
+  it(' should calcul', () => {
+    let resto:Restaurant = new Restaurant();
+    resto.nombreNote = 2;
+    resto.note = 20;
+    expect(component.calculRestaurantNote(resto)).toEqual(10);
+  })
 
 });

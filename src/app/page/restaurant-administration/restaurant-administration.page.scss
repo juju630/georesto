@@ -3,8 +3,9 @@
 }
 
 .sizeIcon{
+    width: 50px;
     font-size: 30px;
-    margin-left: 15px;
+    margin-left: 1px;
 }
 
 .sizeText{
@@ -12,4 +13,8 @@
 }
 .edit-item-slider{
     margin:0;
+}
+
+.iconDelete{
+    background-color: red !important;
 }

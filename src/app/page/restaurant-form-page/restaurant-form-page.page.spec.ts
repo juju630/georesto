@@ -1,7 +1,9 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-
 import { RestaurantFormPagePage } from './restaurant-form-page.page';
+
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('RestaurantFormPagePage', () => {
   let component: RestaurantFormPagePage;
@@ -10,7 +12,9 @@ describe('RestaurantFormPagePage', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ RestaurantFormPagePage ],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot(),
+        RouterTestingModule,
+        HttpClientTestingModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(RestaurantFormPagePage);
@@ -21,4 +25,9 @@ describe('RestaurantFormPagePage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('init form control', () => {
+    component.initFormControl();
+    expect(component.formGroup).toBeDefined();
+  })
 });

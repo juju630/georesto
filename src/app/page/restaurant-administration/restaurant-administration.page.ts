@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Restaurant } from 'src/app/model/restaurant';
 import { RestaurantsService } from 'src/app/providers/restaurants/restaurants.service';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { ServiceShareService } from '../../providers/serviceShare/service-share.service';
 
 @Component({
   selector: 'app-restaurant-administration',
@@ -13,7 +15,9 @@ export class RestaurantAdministrationPage implements OnInit {
   restaurants:Restaurant[] = [];
 
   constructor(private restaurantService:RestaurantsService,
-    private alertController:AlertController) { }
+    private alertController:AlertController,
+    private route:Router,
+    private serviceShare:ServiceShareService) { }
 
   ngOnInit() {
     this.initRestaurant();
@@ -30,30 +34,28 @@ export class RestaurantAdministrationPage implements OnInit {
       header: 'Alert',
       subHeader: 'Suppression',
       message: 'Voulez-vous supprimer ce restaurant ?',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Valider',
-          handler: () => {
-            console.log('Valider Clicked');
-            this.restaurantService.delete(restaurant).subscribe(resp => {
-              this.initRestaurant();
-            })
-          }
+      buttons: [{
+        text:'OK',
+        handler: () => {
+          this.restaurantService.delete(restaurant).subscribe( resp => {})
         }
-      ]
+      },{
+        text:'Cancel'
+      }]
+      
     });
     await alert.present();
+    this.initRestaurant();
   }
 
   deleteRestaurant(restaurant:Restaurant){
     this.presentAlert(restaurant);
+    this.initRestaurant();
+  }
+
+  modifyRestaurant(restaurant:Restaurant){
+    this.serviceShare.setCurrentModifyRestaurant(restaurant);
+    this.route.navigate(['/restaurant-form',restaurant]);
   }
 
 

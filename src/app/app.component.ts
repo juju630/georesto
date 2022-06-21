@@ -10,6 +10,6 @@ export class AppComponent {
     { title: 'Ajouter un restaurant', url: '/restaurant-form', icon: 'warning' },
     { title: 'Administrer Restaurant', url: '/restaurant-administration', icon: 'warning'}
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+  public labels = [];
   constructor() {}
 }

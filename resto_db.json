@@ -65,41 +65,6 @@
       "imageUrl": "https://image.shutterstock.com/image-photo/halflighted-hall-loft-style-mexican-600w-430097278.jpg",
       "id": 7,
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mollis vel tortor at fringilla. Integer eget sapien nisl. Nunc ut egestas lectus, vitae porttitor lorem. Donec tempor augue quis sem euismod, sit amet consequat ante posuere. Maecenas malesuada vestibulum neque. Cras eget tellus vitae quam mollis consectetur. Maecenas ullamcorper risus lectus, non condimentum dui tempus a. Morbi ac lobortis leo, quis finibus est. Etiam lacus felis, pellentesque vel arcu a, varius convallis est. Praesent fermentum leo ut leo pellentesque pulvinar.\n\n\tCras eget purus et urna lobortis viverra sit amet sed sapien. Vivamus quis felis egestas, varius quam non, mollis lorem. Duis lobortis rhoncus elit fermentum bibendum."
-    },
-    {
-      "nom": "test",
-      "codePostal": 63000,
-      "ville": "clermont-ferrand",
-      "rue": "62 rue de l'oradou",
-      "note": 0,
-      "nombreNote": 0,
-      "imageUrl": "https://media.gettyimages.com/photos/cafebar-in-moscow-picture-id1158221681?s=2048x2048",
-      "description": "test",
-      "id": 8
-    },
-    {
-      "nom": "test2",
-      "codePostal": 63000,
-      "ville": "clermont-ferrand",
-      "rue": "62 rue de l'oradou",
-      "note": 0,
-      "nombreNote": 0,
-      "imageUrl": "https://media.gettyimages.com/photos/cafebar-in-moscow-picture-id1158221681?s=2048x2048",
-      "description": "test 2",
-      "id": 9
-    },
-    {
-      "nom": "bonsoir",
-      "codePostal": 75000,
-      "ville": "paris",
-      "rue": "rue",
-      "note": 0,
-      "nombreNote": 0,
-      "imageUrl": "az",
-      "latitude": 48.87854189999999,
-      "longitude": 2.3642198,
-      "description": "hey",
-      "id": 10
     }
   ]
 }

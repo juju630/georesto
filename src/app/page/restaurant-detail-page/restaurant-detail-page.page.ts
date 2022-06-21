@@ -100,9 +100,10 @@ export class RestaurantDetailPagePage implements OnInit {
           }else{    
             this.restaurant.nombreNote ++;
             this.restaurant.note = Number(this.restaurant.note)+ Number(data.note);
-            this.presentToast(" Note prise en compte ",true);
+            this.restaurantsService.update(this.restaurant).subscribe(resp => {
+              this.presentToast(" Note prise en compte ",true);
+            })
           }
-          
         }
       },{
         text: 'Annuler'

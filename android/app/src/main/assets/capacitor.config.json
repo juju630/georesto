@@ -1,0 +1,6 @@
+{
+	"appId": "georesto",
+	"appName": "georesto",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

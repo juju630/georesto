@@ -24,8 +24,12 @@ Sur la page du détails du restaurant vous pouvez trouver plusieurs informations
 1. Une brève description du restaurant.
 2. La note du restaurant.
 3. Une carte des environs afin de trouver facilement le restaurant. 
+4. Vous pouvez aussi noter le restaurant
 
 ![image](https://user-images.githubusercontent.com/58172330/174342849-a9dad40d-65d7-47c5-945a-9ebe16238ded.png)
+
+![image](https://user-images.githubusercontent.com/58172330/174852179-cdd6406e-9b48-4251-abd9-f166675a21c4.png)
+
 
 ## Ajouter un Restaurant ##
 

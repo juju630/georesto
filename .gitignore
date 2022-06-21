@@ -75,3 +75,7 @@ core/playwright-report/
 core/**/*-snapshots
 
 .npmrc
+
+
+android/
+www/

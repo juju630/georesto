@@ -76,5 +76,4 @@ core/**/*-snapshots
 
 .npmrc
 
-android/
 www/

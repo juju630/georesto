@@ -67,6 +67,11 @@ capacitor-google-map {
     font-weight: lighter;
 }
 
+.plus_button_margin{
+    display: flex;
+    justify-content: space-around;
+}
+
 @media (max-width : 767px){
     .restaurant-note{
         margin-top: 0;

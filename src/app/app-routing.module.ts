@@ -25,6 +25,10 @@ const routes: Routes = [
   },  {
     path: 'restaurant-administration',
     loadChildren: () => import('./page/restaurant-administration/restaurant-administration.module').then( m => m.RestaurantAdministrationPageModule)
+  },
+  {
+    path: 'recherche-restaurant',
+    loadChildren: () => import('./page/recherche-restaurant/recherche-restaurant.module').then( m => m.RechercheRestaurantPageModule)
   }
 
 ];

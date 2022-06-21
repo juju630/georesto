@@ -18,8 +18,13 @@
         </ion-col >
           
         <ion-col size="12" size-sm="12" size-md="3">
-          <div class="restaurant-note">
-            {{ restaurant.note }} / 10
+          <div *ngIf="!restaurant.nombreNote == 0" class="restaurant-note plus_button_margin">
+            <span>{{ calculRestaurantNote(restaurant) | number: '1.2' }} / 10 </span>
+            <ion-icon  class="plus_button_margin" (click)="displayNoteAlert()" name="add-circle-outline" size="large"></ion-icon>   
+          </div>
+          <div *ngIf="restaurant.nombreNote == 0" class="restaurant-note plus_button_margin">
+            <span> Pas de note disponible pour l'instant</span>
+            <ion-icon  class="plus_button_margin" (click)="displayNoteAlert()" name="add-circle-outline" size="large"></ion-icon>   
           </div>
         </ion-col>
       </ion-row>

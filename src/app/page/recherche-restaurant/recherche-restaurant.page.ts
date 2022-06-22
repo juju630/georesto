@@ -112,10 +112,10 @@ export class RechercheRestaurantPage implements OnInit {
     this.displayRestaurant = [];
     let coordinates = await Geolocation.getCurrentPosition();
     let coords = {lat : coordinates.coords.latitude, lng: coordinates.coords.longitude};
-    this.restaurants.forEach(rest => {
+    this.restaurants.forEach(async rest => { 
       let x = coords.lat - rest.latitude;
       let y = coords.lng - rest.longitude;
-      if(Math.sqrt(x*x + y*y) < 3.39){
+      if(await this.calculDistance(rest) < this.distance){
         this.displayRestaurant.push(rest);
       }
     })
@@ -124,5 +124,25 @@ export class RechercheRestaurantPage implements OnInit {
 
   onIonChange(event: Event){
     this.distance = (event as RangeCustomEvent ).detail.value;
+  }
+
+  async calculDistance(restaurant:Restaurant){
+    let coordinates = await Geolocation.getCurrentPosition();
+    let coords = {lat : coordinates.coords.latitude, lng: coordinates.coords.longitude};
+    let radiusEarthKm = 6371.07103;
+
+    let RadiusLatFrom = restaurant.latitude * (Math.PI / 180);
+    let RadiusLatTo = coords.lat * (Math.PI / 180);
+
+    let latDiff = RadiusLatTo - RadiusLatFrom;
+
+    let RadiusLngFrom = restaurant.longitude * (Math.PI / 180);
+    let RadiusLngTo = coords.lng * (Math.PI / 180);
+
+    let lngDiff = RadiusLngTo - RadiusLngFrom;
+
+    let distance = 2 * radiusEarthKm * Math.sin(Math.sqrt(Math.sin(latDiff/2) * Math.sin(latDiff/2) + Math.cos(RadiusLatFrom) * Math.cos(RadiusLatTo) * Math.sin(lngDiff/2) * Math.sin(lngDiff/2)));
+    console.log("Distance" + distance);
+    return distance
   }
 }

@@ -40,7 +40,7 @@
             <ion-img class="card-img" src={{restaurant.imageUrl}} style="height: 100%;min-width: 100%;" ></ion-img>
           </ion-thumbnail>
           <ion-card-header>
-            <ion-card-subtitle>{{ restaurant.note }}</ion-card-subtitle>
+            <ion-card-subtitle>{{ calculRestaurantNote(restaurant) }}</ion-card-subtitle>
             <ion-card-title class="card-title">{{ restaurant.nom }}</ion-card-title>
           </ion-card-header>
         </ion-card>

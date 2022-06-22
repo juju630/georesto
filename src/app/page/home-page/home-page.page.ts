@@ -36,4 +36,11 @@ export class HomePagePage implements OnInit {
   detailRestaurant(restaurant:Restaurant){   
     this.router.navigate(['restaurant-detail/'+restaurant.id]);
   }
+
+  calculRestaurantNote(restaurant:Restaurant){
+    if(restaurant.nombreNote == 0){
+      return 0;
+    }
+    return restaurant.note / restaurant.nombreNote;
+  }
 }

@@ -27,6 +27,8 @@
         <ion-col>
           <ion-button (click)="Rechercher()" >Rechercher </ion-button>
           <ion-button (click)="clearFilter()" >clear </ion-button>
+          <ion-button (click)="RechercherProche()" >Proche de moi </ion-button>
+          <ion-range (ionChange)="onIonChange($event)"></ion-range>
         </ion-col>
       </ion-row>
     </ion-grid>

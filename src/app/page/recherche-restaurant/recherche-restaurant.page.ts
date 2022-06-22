@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Restaurant } from 'src/app/model/restaurant';
 import { RestaurantsService } from 'src/app/providers/restaurants/restaurants.service';
+import { Geolocation } from '@capacitor/geolocation';
+import { RangeValue } from '@ionic/core';
+import { RangeCustomEvent } from '@ionic/core';
+
 
 @Component({
   selector: 'app-recherche-restaurant',
@@ -13,6 +17,7 @@ export class RechercheRestaurantPage implements OnInit {
   researchInputName:string = undefined;
   researchInputNote:number = undefined;
 
+  distance:RangeValue = 1;
 
   restaurants:Restaurant[];
   displayRestaurant:Restaurant[];
@@ -29,6 +34,7 @@ export class RechercheRestaurantPage implements OnInit {
 
   ngOnInit() {
     this.loadAllRestaurant();
+    
   }
 
   loadAllRestaurant(){
@@ -100,5 +106,23 @@ export class RechercheRestaurantPage implements OnInit {
         this.validRestaurantNote.push(rest);
       }
     });
+  }
+
+  async RechercherProche() {
+    this.displayRestaurant = [];
+    let coordinates = await Geolocation.getCurrentPosition();
+    let coords = {lat : coordinates.coords.latitude, lng: coordinates.coords.longitude};
+    this.restaurants.forEach(rest => {
+      let x = coords.lat - rest.latitude;
+      let y = coords.lng - rest.longitude;
+      if(Math.sqrt(x*x + y*y) < 3.39){
+        this.displayRestaurant.push(rest);
+      }
+    })
+    console.log('Current position:', coordinates);
+  };
+
+  onIonChange(event: Event){
+    this.distance = (event as RangeCustomEvent ).detail.value;
   }
 }

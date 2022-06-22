@@ -19,8 +19,10 @@ export class RechercheRestaurantPage implements OnInit {
 
   distance:RangeValue = 1;
 
+  loadingLocalisation:Boolean = false;
+
   restaurants:Restaurant[];
-  displayRestaurant:Restaurant[];
+  displayRestaurant:Restaurant[] = [];
 
   // pour la recherche
 
@@ -109,6 +111,7 @@ export class RechercheRestaurantPage implements OnInit {
   }
 
   async RechercherProche() {
+    this.loadingLocalisation = true;
     this.displayRestaurant = [];
     let coordinates = await Geolocation.getCurrentPosition();
     let coords = {lat : coordinates.coords.latitude, lng: coordinates.coords.longitude};
@@ -118,7 +121,9 @@ export class RechercheRestaurantPage implements OnInit {
       if(await this.calculDistance(rest) < this.distance){
         this.displayRestaurant.push(rest);
       }
+    this.loadingLocalisation = false;
     })
+    
     console.log('Current position:', coordinates);
   };
 

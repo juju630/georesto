@@ -1,5 +1,14 @@
 # georesto
 
+## contact 
+
+### Beaudoux Julien 
+ 1. [Linkedin](https://www.linkedin.com/in/julien-beaudoux-412261199/) 
+ 1. Email : julien.beaudoux63@gmail.com
+### Coyac Etienne 
+ 1.  [Linkedin](https://www.linkedin.com/in/etienne-coyac-01a5561ba/)
+ 1. Email : etienne.coyac@gmail.com
+
 ## Principe 
 
 Faire une application qui permet de regrouper les meilleurs restaurants autour de la personne.
